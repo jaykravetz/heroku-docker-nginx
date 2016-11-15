@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo " -> Removing docker images"
+docker rm -vf nxing1
+
+echo " -> Rebuilding the image from current directory"
+docker build -t heroku-docker-nginx .
+
+echo " -> Run the slave container"
+
+docker run -d --name nxing1 \
+  -p 3001:80
+  heroku-docker-nginx
+
+echo " -> Done."
+docker ps
+
+# docker exec -i -t nxing1 bash
