@@ -10,6 +10,12 @@ server {
         index  index.html index.htm;
     }
 
+    location /app1/ {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass https://desolate-stream-85933.herokuapp.com;
+    }
+
     #error_page  404              /404.html;
 
     # redirect server error pages to the static page /50x.html
