@@ -9,10 +9,11 @@ docker build -t heroku-docker-nginx .
 echo " -> Run the slave container"
 
 docker run -d --name nxing1 \
+  --env PORT=80 \
   -p 3001:80 \
   heroku-docker-nginx
 
-echo " -> Done."
 docker ps
+echo " -> Done. To shell into the container: docker exec -i -t nxing1 bash"
 
 # docker exec -i -t nxing1 bash
