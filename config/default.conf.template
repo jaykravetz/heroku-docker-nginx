@@ -11,7 +11,7 @@ server {
     }
 
     location /app1/ {
-        proxy_pass https://desolate-stream-85933.herokuapp.com;
+        proxy_pass https://desolate-stream-85933.herokuapp.com:443;
     }
 
     #error_page  404              /404.html;
