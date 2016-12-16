@@ -11,4 +11,4 @@ https://sleepy-journey-52785.herokuapp.com/
 
 Something along these lines:
 
-curl -I -H "X-Forwarded-For: 173.178.155.74" http://localhost:3001
+curl -I -H "X-Forwarded-For: 10.136.102.79, 173.178.155.74" http://localhost:3001
