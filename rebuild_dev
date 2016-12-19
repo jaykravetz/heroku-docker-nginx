@@ -10,6 +10,7 @@ echo " -> Run the slave container"
 
 docker run -d --name nxing1 \
   --env PORT=80 \
+  --env APP1_URL=https://pure-everglades-37512.herokuapp.com:443 \
   -p 3001:80 \
   heroku-docker-nginx
 

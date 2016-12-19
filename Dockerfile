@@ -92,4 +92,4 @@ COPY config/geoip2.conf /etc/nginx/conf.d/geoip2.conf
 COPY config/real_ip.conf /etc/nginx/conf.d/real_ip.conf
 
 # Out-of-the-box, Nginx doesn't support using environment variables inside most configuration blocks. But envsubst may be used as a workaround if you need to generate your nginx configuration dynamically before nginx starts.
-CMD /bin/bash -c "envsubst \\\$PORT < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+CMD /bin/bash -c "envsubst \\\$PORT,\\\$APP1_URL < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"

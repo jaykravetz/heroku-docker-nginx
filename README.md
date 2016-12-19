@@ -7,6 +7,12 @@ https://sleepy-journey-52785.herokuapp.com/
 - Heroku and Docker: https://devcenter.heroku.com/articles/container-registry-and-runtime
 - Nginx docker container (source): https://hub.docker.com/_/nginx/
 
+## configuration
+
+```
+heroku config:set APP1_URL=https://pure-everglades-37512.herokuapp.com:443
+```
+
 ## Testing
 
 Something along these lines:
