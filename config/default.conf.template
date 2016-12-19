@@ -8,7 +8,7 @@ server {
     }
 
     location = /app1 {
-        return 302 $scheme://$http_host$request_uri/;
+        return 301 $scheme://$http_host$request_uri/;
     }
 
     location /app1/ {
