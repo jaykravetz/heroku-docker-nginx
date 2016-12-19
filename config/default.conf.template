@@ -7,16 +7,19 @@ server {
         index  index.html index.htm;
     }
 
+    # Something deeper in the stack on stack return a redirect to /app1/ from /app1, but attached the wrong port. So let's catch it before it happens and redirect to the correct location
     location = /app1 {
         return 301 $scheme://$http_host$request_uri/;
     }
 
     location /app1/ {
-        # proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header CLIENT_IP $remote_addr; # rails midlleware uses it to pick the correct IP from X-Forwarded-For
 
         proxy_pass ${APP1_URL};
+
+        # If we change host, Heroku won't recognize the app we're requesting. So we can't use this directive
+        # proxy_set_header Host $host; 
     }
 
     #error_page  404              /404.html;
