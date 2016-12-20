@@ -3,6 +3,7 @@ server {
     server_name _;
 
     location / {
+        proxy_set_header PROXIED_APP "app-root"; # this header is here only for dev, and can be removed
         include includes/proxy.conf;
         proxy_pass ${APP1_URL};
     }
@@ -14,16 +15,8 @@ server {
     }
 
     location /app1/ {
+        proxy_set_header PROXIED_APP "app-1"; # this header is here only for dev, and can be removed
         include includes/proxy.conf;
         proxy_pass ${APP1_URL};
-    }
-
-    #error_page  404              /404.html;
-
-    # redirect server error pages to the static page /50x.html
-    #
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   /usr/share/nginx/html;
     }
 }
