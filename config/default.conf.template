@@ -3,8 +3,8 @@ server {
     server_name _;
 
     location / {
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
+        include includes/proxy.conf;
+        proxy_pass ${APP1_URL};
     }
 
     # Something deeper in the stack returns a redirect to /app1/ from /app1, but with the wrong port. So let's catch it before it happens and redirect to the correct location
