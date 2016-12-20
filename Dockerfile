@@ -88,6 +88,7 @@ RUN ./configure \
 
 COPY config/conf.d /etc/nginx/conf.d
 COPY config/includes /etc/nginx/includes
+COPY config/nginx.conf /etc/nginx/nginx.conf
 
 # Out-of-the-box, Nginx doesn't support using environment variables inside most configuration blocks. But envsubst may be used as a workaround if you need to generate your nginx configuration dynamically before nginx starts.
 CMD /bin/bash -c "envsubst \\\$PORT,\\\$APP1_URL < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
