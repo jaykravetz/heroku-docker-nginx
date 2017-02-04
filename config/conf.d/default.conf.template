@@ -2,9 +2,9 @@ server {
     listen ${PORT} default_server;
     server_name _;
 
+    include includes/proxy.conf;
+
     location / {
-        proxy_set_header PROXIED_APP "app-root"; # this header is here only for dev, and can be removed
-        include includes/proxy.conf;
         proxy_pass ${APP1_URL};
     }
 
@@ -15,8 +15,6 @@ server {
     }
 
     location /app1/ {
-        proxy_set_header PROXIED_APP "app-1"; # this header is here only for dev, and can be removed
-        include includes/proxy.conf;
         proxy_pass ${APP1_URL};
     }
 }
